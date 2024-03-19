@@ -22,6 +22,15 @@ def get_item_info(item_number):
     if response.status_code == 200:
         return response.json()
 
+@app.route('/purchase/<item_number>')
+def get_item_info(item_number):
+    if item_number is None:
+        return 'No item number specified'
+
+    response = requests.get(f"http://172.17.0.1:5060/purchase?item_number={item_number}")
+    if response.status_code == 200:
+        return response.json()
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
