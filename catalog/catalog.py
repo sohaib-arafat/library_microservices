@@ -34,7 +34,7 @@ def query_catalog_items():
         return jsonify(dict(rows[0]))
 
     else:
-        return jsonify({"message":"Invalid query parameters"})
+        return jsonify({"message": "Invalid query parameters"})
 
 
 @app.route('/update', methods=['PATCH'])
@@ -70,4 +70,4 @@ def update_catalog_item():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5050)
+    app.run(debug=False, host='0.0.0.0', port=5000)

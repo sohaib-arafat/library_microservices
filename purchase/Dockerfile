@@ -12,6 +12,6 @@ RUN pip3 install flask
 RUN pip3 install requests
 
 
-EXPOSE 5060
+EXPOSE 5000
 
-CMD ["python3", "app.py"]
+CMD ["python3", "purchase.py"]
