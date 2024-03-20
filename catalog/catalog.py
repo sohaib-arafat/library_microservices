@@ -42,12 +42,12 @@ def update_catalog_item():
     data = request.json
     if data is None or not data:
         return jsonify("Invalid request data")
-    cursor = get_db_connection().cursor()
+    conn = get_db_connection()
+    cursor = conn.cursor()
     if data.keys().__contains__("item_number") and (
             data.keys().__contains__("stock_count") or data.keys().__contains__("cost")):
 
         if data.keys().__contains__("stock_count"):
-            conn = get_db_connection()
             stock_count = data["stock_count"]
             item_number = data["item_number"]
 
@@ -57,7 +57,6 @@ def update_catalog_item():
                 return jsonify({"error": f"Something went wrong,make sure that item {item_number} exists"}), 404
             conn.commit()
         if data.keys().__contains__("cost"):
-            conn = get_db_connection()
             cost = data["cost"]
             item_number = data["item_number"]
             cursor.execute("UPDATE catalog_item SET cost = ? WHERE itemnumber = ?", (cost, item_number))
