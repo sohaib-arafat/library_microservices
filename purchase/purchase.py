@@ -33,7 +33,7 @@ def orders(item_num):
         else:
             return jsonify({'message': f'failed to  purchase item {item_num}'}), 404
     else:
-        return jsonify({'error': 'Failed to fetch data'}), 404
+        return jsonify({'message': f'failed to  purchase item {item_num}'}), 404
 
 
 if __name__ == '__main__':
